@@ -1,0 +1,36 @@
+works_on:
+
+('111111100', 1, 40.0),
+('111111101', 2, 40.0),
+
+
+project:
+
+('ProductX', 1, 'Bellaire', 1),
+('ProductY', 2, 'Sugarland', 4),
+
+
+employee:
+
+('Jared', 'D', 'James', '111111100', '1965-05-11', '123 Peachtree, Atlanta, GA', 'M', 85000.00, NULL, 1),
+('Jon', 'C', 'Jones', '111111101', '1966-07-10', '111 Allgood, Atlanta, GA', 'M', 45000.00, '111111100', 4),
+
+
+dept_locations:
+
+(1, 'Houston'),
+(4, 'Stafford');
+
+
+dependent:
+
+('111111100', 'Alice', 'F', '1995-05-11', 'Daughter'),
+('111111101', 'Elizabeth', 'F', '1997-02-08', 'Spouse');
+
+
+department:
+
+('Headquarters', 1, '111111100', '2016-05-11'),
+('Administration', 4, '111111100', '2016-05-11'),
+
+

@@ -1,0 +1,84 @@
+create database company_schema;
+
+use company_schema;
+
+create table employee (
+    fname varchar(100) not null,
+    lname varchar(100) not null,
+    Minit varchar(50) not null,
+    ssn varchar(20) primary key,
+    address varchar(1000) not null,
+    gender varchar(7) not null,
+    salary float not null default 0,
+    super_ssn varchar(20),
+    dno int,
+    constraint fkey_sp_ssn foreign key (super_ssn) references employee(ssn)
+);
+
+desc company_schema.employee;
+
+use company_schema;
+
+create table department (
+    dname varchar(20) not null unique,
+    dnumber int primary key,
+    mgr_ssn varchar(20),
+    mgr_start_date date not null,
+    constraint fkey_dep_mgr foreign key (mgr_ssn) references employee(ssn)
+);
+
+desc department;
+
+use company_schema;
+
+create table dept_locations (
+    dnumber int,
+    dlocation varchar(20) not null unique,
+    constraint fkey_dep_loc foreign key (dnumber) references department(dnumber)
+);
+
+desc dept_locations;
+
+use company_schema;
+
+create table project (
+    pname varchar (100) not null,
+    pnumber int primary key,
+    plocation varchar(50) not null,
+    dnum int,
+    constraint fkey_pro_dep foreign key (dnum) references department(dnumber)
+);
+
+desc project;
+
+use company_schema;
+
+create table works_on (
+    essn varchar(20),
+    pno int,
+    hours float,
+    constraint fkey_work_ssn foreign key (essn) references employee(ssn),
+    constraint fkey_work_pro foreign key (pno) references project(pnumber)
+);
+
+desc works_on;
+
+use company_schema;
+
+create table dependent (
+    essn varchar(20),
+    dependent_name varchar(50) unique,
+    gender varchar(7) not null,
+    bdate date not null,
+    relationship varchar(20) not null,
+    constraint fkey_ssn_emp foreign key (essn) references employee(ssn)
+);
+
+desc dependent;
+
+use company_schema;
+
+alter table employee add constraint fkey_dep foreign key (dno) references department(dnumber);
+
+desc company_schema.employee;
+

@@ -1,0 +1,36 @@
+-- task 1
+select * from employee;
+
+-- task 2
+select fname from employee where salary > 40000;
+
+-- task 3 --
+select fname, lname from employee e where ssn in (select superssn from employee);
+
+-- task 4
+select salary, dno from employee where sex = 'F';
+
+-- task 5
+select fname from employee where salary between 40000 and 50000;
+
+-- task 6
+select distinct fname, lname from employee where dno = 5;
+
+-- task 7
+select * from employee order by salary desc;
+-- task 8
+insert into project (pname,    pnumber,    plocation,    dnum) values ('Image Processing',
+    4,    'USA',    6);
+select * from project;
+
+-- task 9
+update project set plocation = 'London' where pname='OperatingSystems' and plocation='Jacksonville';
+select * from project;
+
+-- task 10
+delete from project where pnumber = 4;
+
+select * from project;
+
+-- task 11
+select fname, lname, dno from employee where dno != 7;

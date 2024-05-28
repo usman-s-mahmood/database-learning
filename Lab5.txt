@@ -1,0 +1,108 @@
+show databases;
+
+-- Q1
+create database hospital;
+
+use hospital;
+
+create table patients (
+	PatientID varchar (15) primary key,
+	Name varchar (15),
+	Age int,
+	Gender varchar(5),
+	Address varchar(20),
+	Disease varchar(10),
+	DoctorID varchar(15)
+);
+
+desc patients;
+
+-- Q2
+alter table patients change Age Age char(5);
+
+desc patients;
+
+-- Q3
+create table doctors (
+	DoctorID varchar (15) primary key,
+	Name varchar (15),
+	Age int,
+	Gender char,
+	Address varchar(20)
+);
+
+desc doctors;
+
+-- Q4
+alter table doctors add column DoctorWard varchar(15);
+
+desc doctors;
+
+-- Q5
+alter table patients add constraint fkey_docID foreign key (DoctorID) references Doctor(DoctorID);
+
+desc patients;
+
+-- Q6
+create table Lab (
+	LabID varchar (15) primary key,
+	TestDate date,
+	TestAmount varchar(20),
+	PatientID varchar(15),
+	DoctorID varchar(15)
+);
+
+desc Lab;
+
+-- Q7
+alter table Lab add constraint fkey_docID foreign key (DoctorID) references Doctor(DoctorID);
+
+desc Lab;
+
+-- Q8
+alter table Lab add constraint fkey_patID foreign key (PatientID) references patients(PatientID);
+
+-- Q9
+alter table Lab change TestAmount Amount varchar(20);
+
+desc Lab;
+
+-- Q10
+alter table Lab change Amount Amount float;
+
+desc Lab;
+
+-- Q11
+alter table Lab add column LabNo varchar (10);
+
+desc Lab;
+
+-- Q12
+create table HospitalRoom (
+	RoomID varchar (15) primary key,
+	RoomAllocationDate date,
+	RoomType varchar(20),
+	RoomStatus varchar(5)
+);
+
+desc HospitalRoom;
+
+-- Q13
+create table PatientBill (
+	BillID varchar (15) primary key,
+	BillDate date,
+	Amount varchar(20),
+	PatientID varchar(15)
+);
+
+desc PatientBill;
+
+-- Q14
+alter table PatientBill add constraint fkey_patID foreign key (PatientID) references patients(PatientID);
+
+desc PatientBill;
+
+-- Q15
+alter table HospitalRoom rename Room;
+
+desc Room;
