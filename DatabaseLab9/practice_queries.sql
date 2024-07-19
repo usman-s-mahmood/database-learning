@@ -1,4 +1,4 @@
--- Active: 1716963650386@@127.0.0.1@3306@classicmodels
+-- Active: 1714057803737@@127.0.0.1@3306@classicmodels
 -- task 1
 select * from customers c left join employees e on c.salesRepEmployeeNumber = e.employeeNumber;
 
